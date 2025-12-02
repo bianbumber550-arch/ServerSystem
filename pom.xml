@@ -217,6 +217,11 @@
             <url>https://repo.codemc.io/repository/maven-public/</url>
             <layout>default</layout>
         </repository>
+        <!-- FIXED: Added bytecode.space repository for paper-nms dependency -->
+        <repository>
+            <id>bytecode-space</id>
+            <url>https://repo.bytecode.space/repository/maven-public/</url>
+        </repository>
     </repositories>
 
     <dependencies>
