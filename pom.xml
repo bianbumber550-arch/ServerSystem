@@ -6,7 +6,7 @@
 
     <groupId>me.testaccount666</groupId>
     <artifactId>ServerSystem</artifactId>
-    <version>${cleanVersion}.${git.commit.id.describe}</version>
+    <version>3.2.1-FIXED</version>
     <packaging>jar</packaging>
 
     <name>ServerSystem</name>
