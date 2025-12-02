@@ -110,11 +110,14 @@
                 </configuration>
             </plugin>
 
+            <!-- REMOVED: paper-nms-maven-plugin - not needed with fixed code -->
+            <!--
             <plugin>
                 <groupId>ca.bkaw</groupId>
                 <artifactId>paper-nms-maven-plugin</artifactId>
                 <version>1.4.8</version>
             </plugin>
+            -->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -231,12 +234,13 @@
             <version>1.21.7-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+        <!-- REMOVED: paper-nms dependency - not needed with fixed code -->
+        <!-- <dependency>
             <groupId>ca.bkaw</groupId>
             <artifactId>paper-nms</artifactId>
             <version>1.21.7-SNAPSHOT</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency> -->
 
         <dependency>
             <groupId>me.clip</groupId>
