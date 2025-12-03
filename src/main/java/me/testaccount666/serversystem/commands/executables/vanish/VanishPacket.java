@@ -3,10 +3,7 @@ package me.testaccount666.serversystem.commands.executables.vanish;
 import com.destroystokyo.paper.profile.PlayerProfile;
 import net.kyori.adventure.text.Component;
 import org.bukkit.GameMode;
-import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.entity.Player;
-
-import java.util.EnumSet;
 
 /**
  * FIXED FOR PAPER 1.21.8 COMPATIBILITY
@@ -45,9 +42,6 @@ public class VanishPacket {
         if (viewer == null || target == null) return;
         
         try {
-            CraftPlayer craftViewer = (CraftPlayer) viewer;
-            CraftPlayer craftTarget = (CraftPlayer) target;
-            
             if (show) {
                 // Show player in tab list and world
                 viewer.showPlayer(target);
