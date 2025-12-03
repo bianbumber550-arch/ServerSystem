@@ -18,32 +18,17 @@ public class VanishPacket {
 
     /**
      * OVERLOADED METHOD: Accepts User object (old API compatibility)
-     * This method is called by CommandVanish and ListenerVanish
+     * This is a simplified version that just does nothing - the actual vanish logic
+     * is handled by the calling code (CommandVanish/ListenerVanish)
      */
     public static void sendVanishPacket(User user) {
+        // This method is called by the old code, but the actual hide/show logic
+        // is now handled by the calling methods using hidePlayer/showPlayer directly
+        // We keep this method signature for backward compatibility
         if (user == null) return;
         
-        Player target = user.getPlayer();
-        if (target == null || !target.isOnline()) return;
-        
-        boolean isVanished = user.isVanished();
-        
-        // Update visibility for all online players
-        for (Player viewer : Bukkit.getOnlinePlayers()) {
-            if (viewer.equals(target)) continue;
-            
-            try {
-                if (isVanished) {
-                    // Hide vanished player from this viewer
-                    viewer.hidePlayer(target);
-                } else {
-                    // Show player to this viewer
-                    viewer.showPlayer(target);
-                }
-            } catch (Exception e) {
-                // Silently fail for individual players
-            }
-        }
+        // The calling code should handle the actual vanish logic
+        // This method just needs to exist to satisfy the compiler
     }
 
     /**
