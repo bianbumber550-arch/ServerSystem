@@ -1,7 +1,9 @@
 package me.testaccount666.serversystem.commands.executables.vanish;
 
 import com.destroystokyo.paper.profile.PlayerProfile;
+import me.testaccount666.serversystem.userdata.User;
 import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
@@ -14,6 +16,39 @@ import org.bukkit.entity.Player;
  */
 public class VanishPacket {
 
+    /**
+     * OVERLOADED METHOD: Accepts User object (old API compatibility)
+     * This method is called by CommandVanish and ListenerVanish
+     */
+    public static void sendVanishPacket(User user) {
+        if (user == null) return;
+        
+        Player target = user.getPlayer();
+        if (target == null || !target.isOnline()) return;
+        
+        boolean isVanished = user.isVanished();
+        
+        // Update visibility for all online players
+        for (Player viewer : Bukkit.getOnlinePlayers()) {
+            if (viewer.equals(target)) continue;
+            
+            try {
+                if (isVanished) {
+                    // Hide vanished player from this viewer
+                    viewer.hidePlayer(target);
+                } else {
+                    // Show player to this viewer
+                    viewer.showPlayer(target);
+                }
+            } catch (Exception e) {
+                // Silently fail for individual players
+            }
+        }
+    }
+
+    /**
+     * NEW METHOD: Direct player-to-player visibility control
+     */
     public static void sendVanishPacket(Player viewer, Player target, boolean show) {
         if (viewer == null || target == null) return;
         
